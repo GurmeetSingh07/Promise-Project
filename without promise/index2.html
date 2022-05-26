@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+        margin: auto;
+        height: 500px;
+        align-items: center;
+      }
+      h1 {
+        display: flex;
+        background-color: blue;
+        height: 200px;
+        width: 200px;
+        border-radius: 10px;
+      }
+      .same h1 {
+        display: flex;
+        justify-content: center;
+
+        align-items: center;
+      }
+      input {
+        display: flex;
+
+        justify-content: center;
+        width: 10%;
+        height: 30px;
+        margin: auto;
+        border-radius: 10px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="same">
+        <h1 id="first"></h1>
+      </div>
+      <div class="same">
+        <h1 id="second"></h1>
+      </div>
+      <div class="same">
+        <h1 id="third"></h1>
+      </div>
+    </div>
+    <input type="submit" value="Start" id="button" onclick="fun()" />
+
+    <script>
+      var i = 1;
+
+      function fun() {
+        const button = "stop";
+
+        document.getElementById("button").onclick = () => {
+          document.getElementById("button").value = button;
+          i = 0;
+          document.getElementById("first").innerHTML = 0;
+          document.getElementById("second").innerHTML = 0;
+          document.getElementById("third").innerHTML = 0;
+        };
+
+        let count = setInterval(function () {
+          document.getElementById("first").innerHTML = i++;
+
+          if (i == 6) {
+            clearInterval(count);
+            count1 = setInterval(function () {
+              document.getElementById("second").innerHTML = i++;
+              if (i == 11) {
+                clearInterval(count1);
+                count2 = setInterval(function () {
+                  document.getElementById("third").innerHTML = i++;
+                  if (i == 16) {
+                    clearTimeout(count2);
+                    i = 0;
+                    document.getElementById("first").innerHTML = 0;
+                    document.getElementById("second").innerHTML = 0;
+                    document.getElementById("third").innerHTML = 0;
+                  }
+                }, 1000);
+              }
+            }, 1000);
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
